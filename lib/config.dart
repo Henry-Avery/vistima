@@ -1,4 +1,3 @@
-import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vistima_00/model/SQLHelper.dart';
@@ -16,7 +15,7 @@ class Config {
           SQLHelper.retrieveTags(),
         ]),
         builder: (context, snapshot) {
-          LogUtil.e(snapshot.data, tag: 'snapshot');
+          // LogUtil.e(snapshot.data, tag: 'snapshot');
 
           if (snapshot.connectionState == ConnectionState.done) {
             return MultiProvider(

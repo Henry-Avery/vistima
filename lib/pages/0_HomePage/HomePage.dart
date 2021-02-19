@@ -34,13 +34,13 @@ class _HomePageState extends State<HomePage>
             ),
             //*主页面
             Container(
-              padding: EdgeInsets.only(left: 15, right: 15),
+              padding: EdgeInsets.only(left: pageMagrin, right: pageMagrin),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //*P1
                   SizedBox(
-                    height: 15,
+                    height: ScreenUtil().setHeight(17),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,16 +50,15 @@ class _HomePageState extends State<HomePage>
                         children: [
                           Container(
                             // color: Colors.red,
-
                             child: Image.asset("assets/icons/boltfill.png"),
-                            width: 34,
-                            height: 34,
+                            width: ScreenUtil().setWidth(32),
+                            height: ScreenUtil().setHeight(32),
                           ),
                           Container(
                             child: Text(
                               "快速开始",
                               style: TextStyle(
-                                  fontSize: 34,
+                                  fontSize: ScreenUtil().setSp(35),
                                   color: vColorMap['subText'],
                                   fontFamily: textfont),
                             ),
@@ -70,7 +69,7 @@ class _HomePageState extends State<HomePage>
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: ScreenUtil().setHeight(18),
                   ),
                   //*P2
                   Row(
@@ -78,13 +77,13 @@ class _HomePageState extends State<HomePage>
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       //*Todo
-                      Container(width: 230, child: TodoSheet()),
+                      Container(width: todoSheetWidth, child: TodoSheet()),
                       SizedBox(
-                        width: 10,
+                        width: sheetGapWidth,
                       ),
                       //*Tag
                       Container(
-                        width: 122,
+                        width: tagSheetWidth,
                         child: TagSheet(),
                       )
                     ],

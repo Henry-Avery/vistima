@@ -10,6 +10,7 @@ import 'package:vistima_00/pages/0_HomePage/HomePage.dart';
 import 'package:vistima_00/pages/1_TodoPage/TodoPage.dart';
 import 'package:vistima_00/pages/2_TaskListPage/TaskListPage.dart';
 import 'package:vistima_00/pages/3_UserPage/UserPage.dart';
+import 'package:vistima_00/pages/TimingPage/TimingPage.dart';
 import 'package:vistima_00/widgets/VBottomAppBar.dart';
 import 'package:vistima_00/widgets/VFloatingActionButton.dart';
 
@@ -37,6 +38,14 @@ class MyApp extends StatelessWidget {
           builder: () => MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: 'Vistima_00',
+                theme: ThemeData(
+                    // 设置路由进出动画
+                    pageTransitionsTheme: PageTransitionsTheme(
+                  builders: <TargetPlatform, PageTransitionsBuilder>{
+                    TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+                    TargetPlatform.android: ZoomPageTransitionsBuilder(),
+                  },
+                )),
                 home: MyHomePage(),
               )),
     );
@@ -77,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         itemCount: 4,
       ),
       //*FAB开始按钮
-      floatingActionButton: VFloatingActionButton(),
+      floatingActionButton: VFloatingActionButton(context),
       //*FAB与BottomAppBar的镶嵌形式
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       //*底部导航栏
