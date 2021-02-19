@@ -52,7 +52,7 @@ class Todo {
     return {
       'id': id,
       'tagIds': tagIds.toString(),
-      // 'type': type,
+      'type': type,
       'title': title,
       'describe': describe,
       'color': color,

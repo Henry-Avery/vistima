@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:vistima_00/pages/TimingPage/TimingPage.dart';
 import 'package:vistima_00/utils.dart';
 
 // ignore: non_constant_identifier_names
-Widget VFloatingActionButton() {
+Widget VFloatingActionButton(BuildContext context) {
   return FloatingActionButton(
     elevation: 1.0,
     isExtended: true,
@@ -30,6 +31,10 @@ Widget VFloatingActionButton() {
     ),
     onPressed: () {
       //!ToCountingPage
+      Navigator.of(context).push(PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) {
+        return TimingPage();
+      }));
     },
   );
 }

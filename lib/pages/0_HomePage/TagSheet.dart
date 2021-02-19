@@ -1,5 +1,5 @@
-import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:vistima_00/const.dart';
 import 'package:vistima_00/model/model.dart';
@@ -12,6 +12,7 @@ class TagSheet extends StatefulWidget {
 }
 
 class _TagSheetState extends State<TagSheet> {
+  int tagSelectIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,7 +30,7 @@ class _TagSheetState extends State<TagSheet> {
                 child: Text(
                   "标签",
                   style: TextStyle(
-                      fontSize: 26,
+                      fontSize: ScreenUtil().setSp(30),
                       color: vColorMap['mainText'],
                       fontWeight: FontWeight.w600,
                       fontFamily: textfont),
@@ -41,14 +42,12 @@ class _TagSheetState extends State<TagSheet> {
                 ),
               ),
               Container(
-                // width: 28,
-                // height: 28,
                 child: InkWell(
                     onTap: () {},
                     child: Image.asset(
                       'assets/icons/edit.png',
-                      width: 28,
-                      height: 28,
+                      width: ScreenUtil().setWidth(28),
+                      height: ScreenUtil().setHeight(28),
                     )),
               )
             ],
@@ -61,7 +60,7 @@ class _TagSheetState extends State<TagSheet> {
         Container(
             height: tagSheetHeight,
             alignment: Alignment.topCenter,
-            color: Colors.grey[200],
+            color: greyBG,
             child: Consumer<TagsNotifier>(builder: (context, tagsNotifier, _) {
               List<Tag> tags = tagsNotifier.getTags();
               return ListView.builder(
@@ -77,13 +76,37 @@ class _TagSheetState extends State<TagSheet> {
   }
 
   Widget tagCard({Tag tag}) {
-    return Container(
-      height: tagCardHeight,
-      decoration: BoxDecoration(
-          color: vColorMap['icon'],
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-          border: Border.all(width: 1, color: Colors.white)),
-      child: Text(tag.title),
+    return InkWell(
+      onTap: () {
+        //*选中事件处理
+        // LogUtil.e("tap-${tag.id}");
+        setState(() {
+          if (tagSelectIndex == tag.id)
+            tagSelectIndex = 0;
+          else
+            tagSelectIndex = tag.id;
+        });
+      },
+      child: Card(
+        child: Stack(
+          children: [
+            Container(
+                height: tagCardHeight,
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(left: ScreenUtil().setWidth(10)),
+                child: Text(
+                  tag.title,
+                  style: TextStyle(fontSize: ScreenUtil().setSp(18)),
+                )),
+            Container(
+              height: tagCardHeight,
+              color: tagSelectIndex == tag.id
+                  ? Colors.grey.withAlpha(150)
+                  : Colors.transparent,
+            )
+          ],
+        ),
+      ),
     );
   }
 }

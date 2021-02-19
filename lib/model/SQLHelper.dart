@@ -8,7 +8,7 @@ import 'package:vistima_00/model/model.dart';
 class SQLHelper {
   //*建表
   static Future<Database> _getDatabase() async {
-    return await openDatabase(join(await getDatabasesPath(), 'vistima.db'),
+    return await openDatabase(join(await getDatabasesPath(), 'vistima_0.db'),
         onCreate: (db, version) async {
       await db.execute(
           "CREATE TABLE tasks(id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -39,7 +39,7 @@ class SQLHelper {
       id: 11,
       tagIds: [1, 2],
       title: "todo",
-      // type: 0,
+      type: 0,
       describe: "todo描述",
       startTime: DateTime.now().add(Duration(hours: 1)),
       endTime: DateTime.now().add(Duration(hours: 1)),
@@ -48,7 +48,7 @@ class SQLHelper {
       id: 12,
       tagIds: [1],
       title: "processing",
-      // type: 1,
+      type: 1,
       describe: "processing描述",
       startTime: DateTime.now(),
       endTime: DateTime.now(),
@@ -57,7 +57,7 @@ class SQLHelper {
         id: 13,
         tagIds: [2],
         title: "done",
-        // type: 2,
+        type: 2,
         describe: "done描述",
         startTime: DateTime.now().add(Duration(hours: -2)),
         endTime: DateTime.now().add(Duration(hours: -1)));
@@ -121,7 +121,7 @@ class SQLHelper {
         (i) => Todo(
             id: maps[i]['id'],
             tagIds: json.decode(maps[i]['tagIds']),
-            // type: maps[i]['type'],
+            type: maps[i]['type'],
             title: maps[i]['title'],
             describe: maps[i]['describe'],
             startTime: DateTime.parse(maps[i]['startTime']),

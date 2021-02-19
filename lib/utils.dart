@@ -34,6 +34,7 @@ Map<String, Color> vColorMap = {
   'icon': Color(0xff8c9eff),
   'mainText': Color(0xff3f51b5),
   'subText': Color(0xff9fa8da),
+  'processing_todo': Color(0xff8C9EFF),
 };
 
 class TimeUtil {

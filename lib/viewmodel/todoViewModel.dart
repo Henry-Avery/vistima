@@ -46,7 +46,7 @@ class TodosNotifier extends ChangeNotifier {
   }
 
   //*按type获取todo
-  List<Todo> todosInType(Type type) {
+  List<Todo> todosInType(int type) {
     return _todos.where((t) => t.type == type).toList();
   }
 
